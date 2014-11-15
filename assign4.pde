@@ -19,6 +19,41 @@ int bulletNum;           //Bullet Order Number
 /*--------Put Variables Here---------*/
 
 
+
+void startGame(){
+  colorMode(RGB);
+  fill(95, 194, 226);
+  textSize(60);
+  text("GALIXIAN", width/2, 240);
+  textSize(20);
+  text("press ENTER to Start", width/2, 280);  
+ }
+ 
+void pauseGame(){
+  colorMode(RGB);
+  fill(95, 194, 226);
+  textSize(40);
+  text("PAUSE", width/2,280);
+  textSize(20);
+  text("press ENTER to Resume", width/2, 280);  
+ }
+
+void winGame(){
+  colorMode(RGB);
+  fill(95, 194, 226);
+  textSize(40);
+  text("WINNER", width/2, 300);
+ }
+ 
+void loseGame(){
+  colorMode(RGB);
+  fill(95, 194, 226);
+  textSize(40);
+  text("BOOM", width/2, 280);
+  textSize(20);
+  text("You are dead", width/2, 280);  
+ }
+ 
 void setup() {
 
   status = GAME_START;
@@ -45,7 +80,9 @@ void draw() {
 
   case GAME_START:
     /*---------Print Text-------------*/
-    text("press enter", 320, 240); // replace this with printText
+    //text("press enter", 320, 240); // replace this with printText
+  startGame();
+    
     /*--------------------------------*/
     break;
 
@@ -71,13 +108,15 @@ void draw() {
 
   case GAME_PAUSE:
     /*---------Print Text-------------*/
-
+  pauseGame();
+  
     /*--------------------------------*/
     break;
 
   case GAME_WIN:
     /*---------Print Text-------------*/
-
+  winGame();
+  
     /*--------------------------------*/
     winAnimate();
     break;
@@ -85,7 +124,8 @@ void draw() {
   case GAME_LOSE:
     loseAnimate();
     /*---------Print Text-------------*/
-
+  loseGame();
+  
     /*--------------------------------*/
     break;
   }
@@ -115,13 +155,26 @@ void keyPressed() {
 
 /*---------Make Alien Function-------------*/
 void alienMaker() {
-  aList[0]= new Alien(50, 50);
+    aList[0]= new Alien(50, 50);
+ for(int i=0; i<12; i++){
+   //for(int j=0; i<4; j++){
+    //aList[i+12*j]= new Alien(50+40*i,50+50*j);
+    aList[i]= new Alien(50+40*i, 50);
+    aList[i+12]= new Alien(50+40*i, 100);
+    aList[i+24]= new Alien(50+40*i, 150);
+    aList[i+36]= new Alien(50+40*i, 200);
+    }
+ //}
 }
+
 
 void drawLife() {
   fill(230, 74, 96);
   text("LIFE:", 36, 455);
   /*---------Draw Ship Life---------*/
+      for(int i=0; i<3; i++ ){
+      ellipse(78+25*i, 459, 15, 15);
+    }
 }
 
 void drawBullet() {
@@ -343,4 +396,3 @@ void cheatKeys() {
     }
   }
 }
-
