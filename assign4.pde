@@ -24,9 +24,9 @@ void startGame(){
   colorMode(RGB);
   fill(95, 194, 226);
   textSize(60);
-  text("GALIXIAN", width/2, 240);
+  text("GALIXIAN", 180, 240);
   textSize(20);
-  text("press ENTER to Start", width/2, 280);  
+  text("press ENTER to Start", 220, 280);  
  }
  
 void pauseGame(){
